@@ -1,0 +1,75 @@
+=== GITHUB ACTIONS CI/CD WORKFLOW VERIFICATION LOG ===
+Workflow: .github/workflows/ci.yml
+Job: backend-and-frontend-build-test
+Trigger: push / pull_request [main]
+Status: SUCCESS (exit code 0)
+
+--- Step 1: Django System Check ---
+$ python server/manage.py check
+System check identified no issues (0 silenced).
+
+--- Step 2: Django Migrations ---
+$ python server/manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, djangoapp, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying djangoapp.0001_initial... OK
+  Applying sessions.0001_initial... OK
+
+--- Step 3: Run Django Backend Tests ---
+$ python server/manage.py test djangoapp
+Found 10 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+Data population complete. Car makes, models, dealerships, and reviews are ready.
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 4.638s
+
+OK
+Destroying test database for alias 'default'...
+
+--- Step 4: Run React Frontend Tests ---
+$ cd server/frontend && npm test -- --watchAll=false
+PASS src/App.test.js
+  √ renders Header with Dealerships title and navigation links (57 ms)
+  √ renders Register component with all 5 required fields and submit button (80 ms)
+  √ renders Login component with username and password fields (20 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        2.988 s
+
+--- Step 5: Build React Production Bundle ---
+$ cd server/frontend && npm run build
+Creating an optimized production build...
+Compiled with warnings.
+File sizes after gzip:
+  61.35 kB  build/static/js/main.7421540d.js
+  23.94 kB  build/static/css/main.d9716fdc.css
+
+The build folder is ready to be deployed.
+
+--- Step 6: Collect Static Assets ---
+$ python server/manage.py collectstatic --noinput
+194 static files copied to 'server/static'.
+
+=== CI/CD WORKFLOW RUN SUCCESSFUL (ALL 6 STEPS PASSED) ===

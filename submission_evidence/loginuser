@@ -1,0 +1,15 @@
+curl.exe -i -X POST http://127.0.0.1:8000/djangoapp/login -H "Content-Type: application/json" --data-raw '{\"userName\":\"demouser\",\"password\":\"Demopass123!\"}' -c cookies.txt
+
+HTTP/1.1 200 OK
+Date: Tue, 27 Oct 2026 18:15:00 GMT
+Server: WSGIServer/0.2 CPython/3.13.7
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 94
+Vary: Cookie
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+Set-Cookie: sessionid=8uqxdv4im0lbn4lxqj6xvqpxsfc0qvdi; expires=Tue, 10 Nov 2026 18:15:00 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax
+
+{"userName": "demouser", "status": "Authenticated", "firstName": "Demo", "lastName": "Driver"}

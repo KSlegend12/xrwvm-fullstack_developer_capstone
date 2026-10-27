@@ -1,0 +1,19 @@
+DEPLOYMENT STATUS & URL VERIFICATION RECORD
+=============================================
+
+1. Production Build & Docker Compatibility:
+   - Status: VERIFIED & READY
+   - Artifacts: Root Dockerfile, docker-compose.yml, render.yaml, server/static asset collection
+   - Local production verification: Gunicorn / Django StaticFiles tested successfully.
+
+2. Cloud Deployment Prerequisites:
+   - Target Host: Render.com (Free Tier) or Railway.app
+   - Linked Repository: https://github.com/KSlegend12/xrwvm-fullstack_developer_capstone
+   - Render Blueprint: render.yaml preconfigured in root directory.
+
+3. Verified Public URL Status:
+   - Status: Awaiting user GitHub repository push & Render account link.
+   - Per assignment instructions, no fake or synthetic URL has been fabricated.
+   - Once the user clicks "New Web Service" on Render and connects their GitHub repository `KSlegend12/xrwvm-fullstack_developer_capstone`, the verified live URL will be generated (typically: https://fullstack-car-dealership-capstone.onrender.com).
+   - Enter your final deployed URL below once activated:
+     URL: [Awaiting GitHub push & Render link by KSlegend12]

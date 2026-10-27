@@ -1,0 +1,13 @@
+curl.exe -i -X GET http://127.0.0.1:8000/djangoapp/get_cars
+
+HTTP/1.1 200 OK
+Date: Tue, 27 Oct 2026 18:16:14 GMT
+Server: WSGIServer/0.2 CPython/3.13.7
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 1276
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+
+{"CarModels": [{"CarModel": "Pathfinder", "CarMake": "NISSAN", "Type": "SUV", "Year": 2023}, {"CarModel": "Qashqai", "CarMake": "NISSAN", "Type": "SUV", "Year": 2023}, {"CarModel": "X-Trail", "CarMake": "NISSAN", "Type": "SUV", "Year": 2023}, {"CarModel": "A-Class", "CarMake": "Mercedes", "Type": "SUV", "Year": 2023}, {"CarModel": "C-Class", "CarMake": "Mercedes", "Type": "SEDAN", "Year": 2023}, {"CarModel": "E-Class", "CarMake": "Mercedes", "Type": "SEDAN", "Year": 2023}, {"CarModel": "A4", "CarMake": "Audi", "Type": "SEDAN", "Year": 2023}, {"CarModel": "A5", "CarMake": "Audi", "Type": "SEDAN", "Year": 2023}, {"CarModel": "A6", "CarMake": "Audi", "Type": "SEDAN", "Year": 2023}, {"CarModel": "Sorrento", "CarMake": "Kia", "Type": "SUV", "Year": 2023}, {"CarModel": "Carnival", "CarMake": "Kia", "Type": "SUV", "Year": 2023}, {"CarModel": "Cerato", "CarMake": "Kia", "Type": "SEDAN", "Year": 2023}, {"CarModel": "Corolla", "CarMake": "Toyota", "Type": "SEDAN", "Year": 2023}, {"CarModel": "Camry", "CarMake": "Toyota", "Type": "SEDAN", "Year": 2023}, {"CarModel": "RAV4", "CarMake": "Toyota", "Type": "SUV", "Year": 2023}, {"CarModel": "Explorer", "CarMake": "Ford", "Type": "SUV", "Year": 2023}, {"CarModel": "F-150", "CarMake": "Ford", "Type": "SUV", "Year": 2023}]}

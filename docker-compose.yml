@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dealership_django_app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - SECRET_KEY=django-insecure-production-capstone-key-2026-safe-strong
+      - sentiment_analyzer_url=http://sentiment:5000/
+      - backend_url=http://database_service:3030
+    depends_on:
+      - sentiment
+    restart: unless-stopped
+
+  sentiment:
+    build:
+      context: ./server/djangoapp/microservices
+      dockerfile: Dockerfile
+    container_name: dealership_sentiment_service
+    ports:
+      - "5050:5000"
+    restart: unless-stopped
+
+  mongo_db:
+    image: mongo:latest
+    container_name: dealership_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  database_service:
+    build:
+      context: ./server/database
+      dockerfile: Dockerfile
+    container_name: dealership_node_db_service
+    ports:
+      - "3030:3030"
+    depends_on:
+      - mongo_db
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
